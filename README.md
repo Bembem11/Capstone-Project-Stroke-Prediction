@@ -60,3 +60,4 @@ df.head()
 The dataset contains **5,110 rows and 12 columns**, including patients' gender, age, bmi, average glucose level, marital status, employment status, lifestyle, and medical information.
 
 3. 
+https://github.com/Bembem11/Capstone-Project-Stroke-Prediction/blob/main/MyCapstoneProject.ipynb#cell-3
