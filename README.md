@@ -27,9 +27,8 @@ The dataset was gotten from an open online data source called Kaggle. [Download 
    | smoking_status    | Smoking behavior of the patient              |
    | stroke            |  Target variable indicating whether a stroke occurred (1 = Yes, 0 = No) |
 
-  ## Data Loading
-
-  1. All necessary libraries were imported at the start of the notebook, covering data manipulation, exploratory data analysis, visualization, machine learning, and class imbalance handling.
+  ##  Data Loading
+  
 ```python
 import pandas as pd
 import numpy as np
@@ -52,12 +51,40 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-2. Loading Dataset
+ All necessary libraries were imported at the start of the notebook, covering data manipulation, exploratory data analysis, visualization, machine learning, and class imbalance handling.
+
+## Loading Dataset
 ```python
 df = pd.read_csv("healthcare-dataset-stroke-data.csv")
 df.head()
 ```
 The dataset contains **5,110 rows and 12 columns**, including patients' gender, age, bmi, average glucose level, marital status, employment status, lifestyle, and medical information.
 
-3. 
-https://github.com/Bembem11/Capstone-Project-Stroke-Prediction/blob/main/MyCapstoneProject.ipynb#cell-3
+## Initial Data Information
+```python
+df.shape     # (5110, 12)
+df.dtypes    # column data types
+df.info()    # non-null counts per column
+df.describe() # statistical summary
+```
+- The dataset has a mix of numerical and categorical features
+- **bmi** contains **201 missing values** — the only column with nulls
+- The target column 'Stroke' is heavily imbalanced (majority = 0)
+- **id** is a non-informative identifier column that will be dropped
+
+## Data Cleaning
+
+1. Checking for Missing Values
+```python
+df.isnull().sum()
+```
+Only one column contained missing values, **bmi** had **201 null entries** out of 5,110 rows. All other columns were complete with no nulls.
+
+2. Dropping the ID Column
+```python
+df.drop(columns=['id'], inplace=True)
+```
+The **id** column is a unique patient identifier with no predictive value. It was dropped to prevent it from influencing the model.
+
+
+
