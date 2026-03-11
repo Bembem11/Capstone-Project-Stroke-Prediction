@@ -78,13 +78,37 @@ df.describe() # statistical summary
 ```python
 df.isnull().sum()
 ```
-Only one column contained missing values, **bmi** had **201 null entries** out of 5,110 rows. All other columns were complete with no nulls.
+ Only one column contained missing values, **bmi** had **201 null entries** out of 5,110 rows. All other columns were complete with no nulls.
 
 2. Dropping the ID Column
 ```python
 df.drop(columns=['id'], inplace=True)
 ```
-The **id** column is a unique patient identifier with no predictive value. It was dropped to prevent it from influencing the model.
+ The **id** column is a unique patient identifier with no predictive value. It was dropped to prevent it from influencing the model.
 
+3. Checking for Duplicates
+```python
+df.duplicated().sum()
+```
+ No duplicate rows were found in the dataset.
 
+4. Filling Missing BMI Values
+```python
+bmi_median = df['bmi'].median()
+df['bmi'] = df['bmi'].fillna(bmi_median)
+
+print(f"Missing values in 'bmi' after filling: {df['bmi'].isnull().sum()}")
+print(f'Median value used: {bmi_median}')
+```
+ Missing **bmi** values were filled using the **median** which is **28.1**. The median was chosen because it is least affected by outliers, which were present in the bmi distribution. After filling, the column had zero missing  values.
+
+5. Removing the 'Other' rows from Gender column
+```python
+print(f"Shape before removing 'Other': {df.shape}")
+df = df[df['gender'] != 'Other']
+print(f"Shape after removing 'Other':{df.shape}")
+```
+Only **1 row** had a gender value of **'Other'**. This record was removed as it is insignificant and could introduce noise during encoding
+
+## Exploratory Data Analysis
 
