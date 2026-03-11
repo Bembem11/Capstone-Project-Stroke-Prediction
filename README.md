@@ -51,3 +51,12 @@ from imblearn.over_sampling import SMOTE
 import warnings
 warnings.filterwarnings("ignore")
 ```
+
+2. Loading Dataset
+```python
+df = pd.read_csv("healthcare-dataset-stroke-data.csv")
+df.head()
+```
+The dataset contains **5,110 rows and 12 columns**, including patients' gender, age, bmi, average glucose level, marital status, employment status, lifestyle, and medical information.
+
+3. 
