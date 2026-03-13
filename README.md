@@ -82,6 +82,8 @@ Before training predictive models, an exploratory analysis was conducted to unco
 ### 9. Residence Type
 * *Observation:* The dataset shows a nearly 50/50 split between urban and rural residents. Stroke cases are also distributed very evenly between these two environments, with urban areas showing only a negligible increase.
 * *Key Insight:* Residence type (urban vs. rural) demonstrates limited predictive power for stroke occurrence and is overshadowed by specific health and lifestyle metrics.
+  
+<img width="1272" height="348" alt="smoking status" src="https://github.com/user-attachments/assets/385b0155-70bd-4237-9d0b-972a3d747999" />
 
 
 
@@ -92,6 +94,7 @@ Before training predictive models, an exploratory analysis was conducted to unco
   * *Non-Stroke Cases:* Exhibit a broader, more balanced spread. While Obese (37.5%) and Overweight (30.8%) are still prominent, there is a much larger share of Normal weight (24.8%) and Underweight (6.9%) individuals.
   *  *Key Insight:* Categorical analysis reveals that elevated BMI (specifically in the overweight and obese ranges) is strongly linked to increased stroke occurrence. This granular finding perfectly contextualizes why advanced machine learning models later identified BMI as the single most critical predictor of stroke risk in this dataset.
 
+<img width="695" height="514" alt="bmi" src="https://github.com/user-attachments/assets/55b45cdc-a203-4ca5-87f7-849f94c7179b" />
 
 ## Model Performance
 
