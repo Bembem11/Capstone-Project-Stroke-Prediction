@@ -92,7 +92,8 @@ Before training predictive models, an exploratory analysis was conducted to unco
 
 
 
-## Final Conclusion
+## Summary based on the EDAs
+### BMI Distribution
 * *Continuous Distribution:* Initial observation of the continuous BMI distributions showed significant overlap between the two groups (mostly concentrated between 25 and 35), making it difficult to sharply differentiate stroke and non-stroke cases at a glance.
  * *Categorical Breakdown:* However, when segmented into standard BMI categories, a stark contrast emerges:
   * *Stroke Cases:* Overwhelmingly concentrated in higher BMI brackets. *Overweight (46.2%)* and *Obese (39.4%)* make up a combined *85.6%* of all stroke cases. Normal weight (14.1%) and Underweight (0.4%) are exceptionally rare.
@@ -101,122 +102,51 @@ Before training predictive models, an exploratory analysis was conducted to unco
 
 <img width="695" height="514" alt="bmi" src="https://github.com/user-attachments/assets/55b45cdc-a203-4ca5-87f7-849f94c7179b" />
 
-## Model Performance
+### Age Distribution
+* Stroke probability scales dramatically across age brackets. The risk is almost negligible (<0.5%) in patients under 40, climbs to ~13% in the 60–80 demographic, and peaks at nearly 20% for those over 80.
+* The likelihood of a stroke accelerates significantly after age 40 and becomes highly prevalent after 60, cementing age as the strongest non-modifiable baseline predictor in the dataset.
+
+### Hypertension & Heart Disease
+*  An intersection analysis of underlying conditions reveals significant overlap. While hypertension is the most common standalone condition (381 cases), it frequently compounds with others: 53 patients had both hypertension and a stroke, 34 had heart disease and a stroke, and 13 patients suffered from all three conditions simultaneously.
+*  Hypertension acts as a major intersecting risk factor that heavily amplifies the likelihood of developing heart disease, suffering a stroke, or both.
+
+
+
+
+
+
+### Machine Learning Models Used
+Several classification algorithms were trained and compared, including:
+
+Logistic Regression
+Random Forest
+Gradient Boosting
+Decision Trees
+Each model was evaluated using train-test splitting and cross-validation to ensure reliable performance.
+
+
+
+
+
+
+
+## Models Performance
 
 Seven different classification models were trained and tested. Ensemble methods significantly outperformed traditional linear models for this dataset.
 
-| Model | Accuracy Score |
+| Model | Accuracy Score | 
 | :--- | :--- |
 | *XGBClassifier* | *0.93* |
 | *RandomForestClassifier* | *0.92* |
-| GradientBoostingClassifier | 0.91 |
-| DecisionTreeClassifier | 0.88 |
-| KNeighborsClassifier | 0.82 |
-| SVC | 0.79 |
-| LogisticRegression | 0.74 |
+| GradientBoostingClassifier | *0.91* |
+| DecisionTreeClassifier | *0.89* |
+| KNeighborsClassifier | *0.83* |
+| SVC | *0.78* |
+| LogisticRegression | *0.74* |
 
 *Top Performer:* The XGBClassifier achieved the highest accuracy at *93%, closely followed by the RandomForestClassifier at **92%*. These models demonstrate strong predictive capability and are highly suited for this diagnostic classification task.
 
-```python
-The accuracy of model LogisticRegression is 0.74
-              precision    recall  f1-score   support
-
-           0       0.99      0.73      0.84       972
-           1       0.14      0.82      0.23        50
-
-    accuracy                           0.74      1022
-   macro avg       0.56      0.78      0.54      1022
-weighted avg       0.95      0.74      0.81      1022
-
-[[711 261]
- [  9  41]]
-
-
-The accuracy of model KNeighborsClassifier is 0.83
-              precision    recall  f1-score   support
-
-           0       0.96      0.85      0.90       972
-           1       0.12      0.40      0.19        50
-
-    accuracy                           0.83      1022
-   macro avg       0.54      0.63      0.55      1022
-weighted avg       0.92      0.83      0.87      1022
-
-[[827 145]
- [ 30  20]]
-
-
-The accuracy of model DecisionTreeClassifier is 0.89
-              precision    recall  f1-score   support
-
-           0       0.96      0.92      0.94       972
-           1       0.15      0.26      0.19        50
-
-    accuracy                           0.89      1022
-   macro avg       0.55      0.59      0.57      1022
-weighted avg       0.92      0.89      0.91      1022
-
-[[898  74]
- [ 37  13]]
-
-
-The accuracy of model RandomForestClassifier is 0.92
-              precision    recall  f1-score   support
-
-           0       0.95      0.97      0.96       972
-           1       0.11      0.08      0.09        50
-
-    accuracy                           0.92      1022
-   macro avg       0.53      0.52      0.53      1022
-weighted avg       0.91      0.92      0.92      1022
-
-[[940  32]
- [ 46   4]]
-
-
-The accuracy of model SVC is 0.78
-              precision    recall  f1-score   support
-
-           0       0.98      0.78      0.87       972
-           1       0.14      0.68      0.23        50
-
-    accuracy                           0.78      1022
-   macro avg       0.56      0.73      0.55      1022
-weighted avg       0.94      0.78      0.84      1022
-
-[[763 209]
- [ 16  34]]
-
-
-The accuracy of model GradientBoostingClassifier is 0.90
-              precision    recall  f1-score   support
-
-           0       0.96      0.93      0.95       972
-           1       0.20      0.32      0.24        50
-
-    accuracy                           0.90      1022
-   macro avg       0.58      0.63      0.60      1022
-weighted avg       0.93      0.90      0.91      1022
-
-[[906  66]
- [ 34  16]]
-
-
-The accuracy of model XGBClassifier is 0.93
-              precision    recall  f1-score   support
-
-           0       0.95      0.97      0.96       972
-           1       0.13      0.08      0.10        50
-
-    accuracy                           0.93      1022
-   macro avg       0.54      0.53      0.53      1022
-weighted avg       0.91      0.93      0.92      1022
-
-[[945  27]
- [ 46   4]]
-```
-
-
+ 
  ## Key Findings & Feature Importance
  To make the model interpretable for healthcare professionals, feature importance was extracted. The analysis revealed that demographic and metabolic factors are the strongest predictors of stroke risk.
 
@@ -230,6 +160,14 @@ Top 3 Stroke Indicators:
 
 *Secondary Factors*: Smoking status (0.078), Residence type (0.054), and Work type (0.043) also contributed to the model, while baseline conditions like existing heart disease (0.026) and hypertension (0.031) had a surprisingly lower relative weight in this specific dataset's tree-based splits.
 
-## Clinical Value
-By identifying **BMI**, **Age**, and **Glucose Levels** as the primary drivers, this model can be integrated into early-warning health systems. Clinicians and preventative care platforms can use these insights to flag high-risk patients for targeted interventions, lifestyle coaching, or further medical screening before a critical event occurs.
+## Early Prevention Strategies
+By identifying **BMI**, **Age**, and **Glucose Levels** as the primary drivers, this model can be integrated into early-warning health systems and faster decision-making.
+
+* Early Risk Screening: Identify high-risk patients through regular health checkups and predictive models.
+* Blood Pressure Control: Monitor and manage hypertension through medication and lifestyle adjustments.
+* Diabetes & Glucose Management: Encourage regular blood sugar monitoring and healthy diet plans.
+* Lifestyle Improvement Programs: Promote smoking cessation, exercise, healthy diet, and weight management.
+* Personalized Preventive Care: Provide targeted monitoring and treatment plans for patients identified as high risk.
+
+Clinicians and preventative care platforms can use these insights to flag high-risk patients for targeted interventions, lifestyle coaching, or further medical screening before a critical event occurs.
 
