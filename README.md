@@ -112,15 +112,117 @@ Seven different classification models were trained and tested. Ensemble methods 
 
 *Top Performer:* The XGBClassifier achieved the highest accuracy at *93%, closely followed by the RandomForestClassifier at **92%*. These models demonstrate strong predictive capability and are highly suited for this diagnostic classification task.
 
+```python
+The accuracy of model LogisticRegression is 0.74
+              precision    recall  f1-score   support
+
+           0       0.99      0.73      0.84       972
+           1       0.14      0.82      0.23        50
+
+    accuracy                           0.74      1022
+   macro avg       0.56      0.78      0.54      1022
+weighted avg       0.95      0.74      0.81      1022
+
+[[711 261]
+ [  9  41]]
+
+
+The accuracy of model KNeighborsClassifier is 0.83
+              precision    recall  f1-score   support
+
+           0       0.96      0.85      0.90       972
+           1       0.12      0.40      0.19        50
+
+    accuracy                           0.83      1022
+   macro avg       0.54      0.63      0.55      1022
+weighted avg       0.92      0.83      0.87      1022
+
+[[827 145]
+ [ 30  20]]
+
+
+The accuracy of model DecisionTreeClassifier is 0.89
+              precision    recall  f1-score   support
+
+           0       0.96      0.92      0.94       972
+           1       0.15      0.26      0.19        50
+
+    accuracy                           0.89      1022
+   macro avg       0.55      0.59      0.57      1022
+weighted avg       0.92      0.89      0.91      1022
+
+[[898  74]
+ [ 37  13]]
+
+
+The accuracy of model RandomForestClassifier is 0.92
+              precision    recall  f1-score   support
+
+           0       0.95      0.97      0.96       972
+           1       0.11      0.08      0.09        50
+
+    accuracy                           0.92      1022
+   macro avg       0.53      0.52      0.53      1022
+weighted avg       0.91      0.92      0.92      1022
+
+[[940  32]
+ [ 46   4]]
+
+
+The accuracy of model SVC is 0.78
+              precision    recall  f1-score   support
+
+           0       0.98      0.78      0.87       972
+           1       0.14      0.68      0.23        50
+
+    accuracy                           0.78      1022
+   macro avg       0.56      0.73      0.55      1022
+weighted avg       0.94      0.78      0.84      1022
+
+[[763 209]
+ [ 16  34]]
+
+
+The accuracy of model GradientBoostingClassifier is 0.90
+              precision    recall  f1-score   support
+
+           0       0.96      0.93      0.95       972
+           1       0.20      0.32      0.24        50
+
+    accuracy                           0.90      1022
+   macro avg       0.58      0.63      0.60      1022
+weighted avg       0.93      0.90      0.91      1022
+
+[[906  66]
+ [ 34  16]]
+
+
+The accuracy of model XGBClassifier is 0.93
+              precision    recall  f1-score   support
+
+           0       0.95      0.97      0.96       972
+           1       0.13      0.08      0.10        50
+
+    accuracy                           0.93      1022
+   macro avg       0.54      0.53      0.53      1022
+weighted avg       0.91      0.93      0.92      1022
+
+[[945  27]
+ [ 46   4]]
+```
+
 
  ## Key Findings & Feature Importance
  To make the model interpretable for healthcare professionals, feature importance was extracted. The analysis revealed that demographic and metabolic factors are the strongest predictors of stroke risk.
 
 Top 3 Stroke Indicators:
 
-**BMI (0.291)**: Body Mass Index emerged as the most significant predictor in the dataset.
-**Age (0.219)**: Advancing age is the second most critical risk factor.
-**Average Glucose Level (0.211)**: Blood sugar levels strongly correlate with stroke likelihood.
+* *BMI (0.291)**: Body Mass Index emerged as the most significant predictor in the dataset.
+
+* *Age (0.219)**: Advancing age is the second most critical risk factor.
+
+* *Average Glucose Level (0.211)**: Blood sugar levels strongly correlate with stroke likelihood.
+
 *Secondary Factors*: Smoking status (0.078), Residence type (0.054), and Work type (0.043) also contributed to the model, while baseline conditions like existing heart disease (0.026) and hypertension (0.031) had a surprisingly lower relative weight in this specific dataset's tree-based splits.
 
 ## Clinical Value
