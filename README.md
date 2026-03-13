@@ -10,8 +10,13 @@ The project includes data cleaning, exploratory data analysis (EDA), feature pre
 ## Dataset
 The dataset was gotten from an open online data source called Kaggle. [Download Here](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
 
-1. Rows: 5,110 patients record
-2. Target: Stroke (1 if the patient had a stroke, 0 if not).
+Key Features:
+* Demographics: gender, age, ever_married, work_type, Residence_type
+* Health Metrics: bmi (Body Mass Index), avg_glucose_level
+* Medical History: hypertension, heart_disease, smoking_status
+* Target Variable: stroke (1 = Patient suffered a stroke, 0 = No stroke)
+  
+  *Note: Missing values in the bmi column were handled using median imputation to maintain data integrity.*
  
    | Feature           | Description                                 |
    | ----------------- | ------------------------------------------- |
