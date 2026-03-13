@@ -32,7 +32,7 @@ Key Features:
    | smoking_status    | Smoking behavior of the patient              |
    | stroke            |  Target variable indicating whether a stroke occurred (1 = Yes, 0 = No) |
 
-## Technologies
+## Tools Used
 - Language: Python
 - Data Manipulation: Pandas, Numpy
 - Data Visualization: Matplotlib & Seaborn 
@@ -106,29 +106,21 @@ Before training predictive models, an exploratory analysis was conducted to unco
 * Stroke probability scales dramatically across age brackets. The risk is almost negligible (<0.5%) in patients under 40, climbs to ~13% in the 60–80 demographic, and peaks at nearly 20% for those over 80.
 * The likelihood of a stroke accelerates significantly after age 40 and becomes highly prevalent after 60, cementing age as the strongest non-modifiable baseline predictor in the dataset.
 
+ image
+
 ### Hypertension & Heart Disease
 *  An intersection analysis of underlying conditions reveals significant overlap. While hypertension is the most common standalone condition (381 cases), it frequently compounds with others: 53 patients had both hypertension and a stroke, 34 had heart disease and a stroke, and 13 patients suffered from all three conditions simultaneously.
 *  Hypertension acts as a major intersecting risk factor that heavily amplifies the likelihood of developing heart disease, suffering a stroke, or both.
+image
 
-
-
-
-
-
-### Machine Learning Models Used
+## Machine Learning Models Used
 Several classification algorithms were trained and compared, including:
 
-Logistic Regression
-Random Forest
-Gradient Boosting
-Decision Trees
+* Logistic Regression
+* Random Forest
+* Gradient Boosting
+* Decision Trees
 Each model was evaluated using train-test splitting and cross-validation to ensure reliable performance.
-
-
-
-
-
-
 
 ## Models Performance
 
@@ -144,22 +136,54 @@ Seven different classification models were trained and tested. Ensemble methods 
 | SVC | *0.78* |
 | LogisticRegression | *0.74* |
 
-*Top Performer:* The XGBClassifier achieved the highest accuracy at *93%, closely followed by the RandomForestClassifier at **92%*. These models demonstrate strong predictive capability and are highly suited for this diagnostic classification task.
+*Top Performer:* **XGBoost** produces the best overall accuracy at 93%, but accuracy alone can be misleading on imbalanced data. **The GradientBoostingClassifier**, with a recall (sensitivity) of 0.32 for the positive class, detects a larger share of true positives. This trade-off suggests XGBoost is better at overall correctness, while GradientBoosting is relatively better at identifying the minority/positive cases.
 
+### Hyperparameter Tuning
+To further improve performance, hyperparameter tuning was applied to the Gradient Boosting model.
+Parameters optimized included:
+
+* Learning rate
+* Number of estimators
+* Maximum tree depth
+These adjustments improved the model’s ability to capture complex patterns in the data.
+
+### Model Evaluation
+Several metrics were used to evaluate the models:
+
+* Accuracy
+* Cross-validation score
+* ROC-AUC score
+* Confusion matrix
+  In medical prediction problems, ROC-AUC is especially important because it measures how well the model distinguishes between positive and negative cases.
+
+   
+image!!!! ROC curve
+
+ ##  Confusion Matrix & The Accuracy Paradox
+
+While the XGBClassifier achieved an impressive overall accuracy of *93.0%*, evaluating the confusion matrix reveals the critical impact of dataset class imbalance on minority-class prediction.
+
+* *Key Insight:* The performance of the classification model was evaluated using a confusion matrix. The model correctly classified 945 true negatives and 5 true positives, while 27 false positives and 45 false negatives were observed. The overall accuracy of the model was 93.0%. However, despite the high accuracy, the model demonstrated low sensitivity (10.0%), indicating that it failed to correctly identify a large proportion of positive cases. The precision of the model was 15.6%, suggesting that many of the predicted positive cases were incorrect. In contrast, the specificity was high (97.2%), indicating that the model was effective in identifying negative cases. These results suggest that although the model performs well in recognizing negative instances, it has limited ability to detect positive cases, likely due to class imbalance in the dataset.
+
+image!!! confusion matrix
  
  ## Key Findings & Feature Importance
  To make the model interpretable for healthcare professionals, feature importance was extracted. The analysis revealed that demographic and metabolic factors are the strongest predictors of stroke risk.
 
-Top 3 Stroke Indicators:
+* Top 3 Stroke Indicators:
 
-* *BMI (0.291)**: Body Mass Index emerged as the most significant predictor in the dataset.
+* *Age (0.6169)**: Age emerged as the most significant predictor in the dataset contributing over 60% of the model's decision making.
 
-* *Age (0.219)**: Advancing age is the second most critical risk factor.
+* *Smoking Status (0.16)**: Smoking Status is the second most critical risk factor.
 
-* *Average Glucose Level (0.211)**: Blood sugar levels strongly correlate with stroke likelihood.
+* *Work Type(0.138)**: Work Type strongly correlate with stroke likelihood.
 
-*Secondary Factors*: Smoking status (0.078), Residence type (0.054), and Work type (0.043) also contributed to the model, while baseline conditions like existing heart disease (0.026) and hypertension (0.031) had a surprisingly lower relative weight in this specific dataset's tree-based splits.
+*Secondary Factors*: Average Glucose Level (0.024), Body Mass Index (0.017), and Ever Married (0.012) also contributed to the model, while baseline conditions like existing heart disease (0.006) and hypertension (0.003) had a surprisingly lower relative weight in this specific dataset's tree-based splits.
 
+
+image !!! feature importance
+
+  
 ## Early Prevention Strategies
 By identifying **BMI**, **Age**, and **Glucose Levels** as the primary drivers, this model can be integrated into early-warning health systems and faster decision-making.
 
