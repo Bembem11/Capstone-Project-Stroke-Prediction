@@ -180,9 +180,7 @@ image!!! confusion matrix
 
 *Secondary Factors*: Average Glucose Level (0.024), Body Mass Index (0.017), and Ever Married (0.012) also contributed to the model, while baseline conditions like existing heart disease (0.006) and hypertension (0.003) had a surprisingly lower relative weight in this specific dataset's tree-based splits.
 
-![feature importance](feature importance.png)
-image !!! feature importance
- 
+![feature importance](https://raw.githubusercontent.com/Bembem11/Capstone-Project-Stroke-Prediction/refs/heads/main/feature%20importance.png)
   
 ## Early Prevention Strategies
 By identifying **BMI**, **Age**, and **Glucose Levels** as the primary drivers, this model can be integrated into early-warning health systems and faster decision-making.
