@@ -106,11 +106,13 @@ Before training predictive models, an exploratory analysis was conducted to unco
 * Stroke probability scales dramatically across age brackets. The risk is almost negligible (<0.5%) in patients under 40, climbs to ~13% in the 60–80 demographic, and peaks at nearly 20% for those over 80.
 * The likelihood of a stroke accelerates significantly after age 40 and becomes highly prevalent after 60, cementing age as the strongest non-modifiable baseline predictor in the dataset.
 
+![heatmap](https://raw.githubusercontent.com/Bembem11/Capstone-Project-Stroke-Prediction/refs/heads/main/heatmap.png)
  image
 
 ## Hypertension & Heart Disease
 *  An intersection analysis of underlying conditions reveals significant overlap. While hypertension is the most common standalone condition (381 cases), it frequently compounds with others: 53 patients had both hypertension and a stroke, 34 had heart disease and a stroke, and 13 patients suffered from all three conditions simultaneously.
 *  Hypertension acts as a major intersecting risk factor that heavily amplifies the likelihood of developing heart disease, suffering a stroke, or both.
+  
 image
 
 ## Machine Learning Models Used
