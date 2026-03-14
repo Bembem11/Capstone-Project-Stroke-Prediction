@@ -180,7 +180,7 @@ image!!! confusion matrix
 
 *Secondary Factors*: Average Glucose Level (0.024), Body Mass Index (0.017), and Ever Married (0.012) also contributed to the model, while baseline conditions like existing heart disease (0.006) and hypertension (0.003) had a surprisingly lower relative weight in this specific dataset's tree-based splits.
 
-
+![feature importance](feature importance.png)
 image !!! feature importance
  
   
