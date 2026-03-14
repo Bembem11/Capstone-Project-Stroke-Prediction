@@ -156,8 +156,7 @@ Several metrics were used to evaluate the models:
 * Confusion matrix
   In medical prediction problems, ROC-AUC is especially important because it measures how well the model distinguishes between positive and negative cases.
 
-   
-image!!!! ROC curve
+![roc curve](https://github.com/Bembem11/Capstone-Project-Stroke-Prediction/blob/main/ROCurve.png) 
 
  ##  Confusion Matrix & The Accuracy Paradox
 
