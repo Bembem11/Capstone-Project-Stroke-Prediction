@@ -164,8 +164,8 @@ While the XGBClassifier achieved an impressive overall accuracy of *93.0%*, eval
 
 * *Key Insight:* The performance of the classification model was evaluated using a confusion matrix. The model correctly classified 945 true negatives and 5 true positives, while 27 false positives and 45 false negatives were observed. The overall accuracy of the model was 93.0%. However, despite the high accuracy, the model demonstrated low sensitivity (10.0%), indicating that it failed to correctly identify a large proportion of positive cases. The precision of the model was 15.6%, suggesting that many of the predicted positive cases were incorrect. In contrast, the specificity was high (97.2%), indicating that the model was effective in identifying negative cases. These results suggest that although the model performs well in recognizing negative instances, it has limited ability to detect positive cases, likely due to class imbalance in the dataset.
 
-image!!! confusion matrix
- 
+![confusion matrix](https://github.com/Bembem11/Capstone-Project-Stroke-Prediction/blob/main/confusion%20matrix.png)
+
  ## Key Findings & Feature Importance
  To make the model interpretable for healthcare professionals, feature importance was extracted. The analysis revealed that demographic and metabolic factors are the strongest predictors of stroke risk.
 
