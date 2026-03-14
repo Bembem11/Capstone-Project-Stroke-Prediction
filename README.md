@@ -108,7 +108,7 @@ Before training predictive models, an exploratory analysis was conducted to unco
 
  image
 
-### Hypertension & Heart Disease
+## Hypertension & Heart Disease
 *  An intersection analysis of underlying conditions reveals significant overlap. While hypertension is the most common standalone condition (381 cases), it frequently compounds with others: 53 patients had both hypertension and a stroke, 34 had heart disease and a stroke, and 13 patients suffered from all three conditions simultaneously.
 *  Hypertension acts as a major intersecting risk factor that heavily amplifies the likelihood of developing heart disease, suffering a stroke, or both.
 image
@@ -182,7 +182,7 @@ image!!! confusion matrix
 
 
 image !!! feature importance
-
+ 
   
 ## Early Prevention Strategies
 By identifying **BMI**, **Age**, and **Glucose Levels** as the primary drivers, this model can be integrated into early-warning health systems and faster decision-making.
@@ -194,4 +194,7 @@ By identifying **BMI**, **Age**, and **Glucose Levels** as the primary drivers, 
 * Personalized Preventive Care: Provide targeted monitoring and treatment plans for patients identified as high risk.
 
 Clinicians and preventative care platforms can use these insights to flag high-risk patients for targeted interventions, lifestyle coaching, or further medical screening before a critical event occurs.
+
+
+
 
